@@ -2,6 +2,22 @@ var demo = demo || {};
 (function () {
     "use strict";
 
+    fluid.registerNamespace("demo.weightConverter");
+
+    demo.weightConverter.output = function (model) {
+        console.log(model)
+    };
+
+    demo.weightConverter.displayImage = function (image, src) {
+        image.attr({
+            src: src
+        });
+    };
+
+    demo.weightConverter.print = function () {
+        console.log("Hey..!!");
+    };
+
     fluid.defaults("demo.weightConverter", {
         gradeNames: "fluid.rendererComponent",
         selectors: {
@@ -72,6 +88,19 @@ var demo = demo || {};
             planet_info: "${planet_info}",
             planet_image: "${planet_image}"
         },
+        invokers: {
+            output: {
+                funcName: "demo.weightConverter.output",
+                args: ["{that}.model"]
+            },
+            displayImage: {
+                funcName: "demo.weightConverter.displayImage",
+                args: ["{that}.dom.planet_image", "{that}.model.planet_src"]
+            },
+            print: {
+                funcName: "demo.weightConverter.print"
+            }
+        },
         modelListeners: {
             "planet_name": {
                 func: "{that}.refreshView"
@@ -82,15 +111,16 @@ var demo = demo || {};
             "gravity": {
                 func: "{that}.refreshView"
             },
-            "planet_image": {
-                func : "{that}.displayImage",
-                args : ["{that}.model.planet_image","{that}.model.planet_src"]
+            "": [{
+                func: "{that}.displayImage",
+                args: ["{that}.model.planet_image", "{that}.model.planet_src"]
+            }, {
+                func: "{that}.output"
             }
-            ,
-            "": "{that}.output"
+            ]
         },
-        events : {
-            onSelect : null
+        events: {
+            onSelect: null
         },
         modelRelay: [
             {
@@ -173,39 +203,9 @@ var demo = demo || {};
             }
 
         ],
-        listeners: {
-
-        },
-        invokers: {
-            output: {
-                funcName: "demo.weightConverter.output",
-                args: ["{that}.model"]
-            },
-            displayImage: {
-                funcName: "demo.weightConverter.displayImage",
-                args: ["{that}.dom.planet_image","{that}.model.planet_src"]
-            },
-            print: {
-                funcName: "demo.weightConverter.print"
-            }
-        },
+        listeners: {},
         renderOnInit: true
     });
-
-    demo.weightConverter.output = function (model) {
-        console.log(model)
-    };
-
-    demo.weightConverter.displayImage = function (image,src){
-        image.attr({
-            src: src
-        });
-        console.log("Hello");
-    };
-
-    demo.weightConverter.print = function () {
-        console.log("Hey..!!");
-    };
 
 
 })();
