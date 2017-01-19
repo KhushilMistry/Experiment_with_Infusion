@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Experiment</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <script type="text/javascript" src="../../../src/lib/jquery/core/js/jquery.js"></script>
+    <script type="text/javascript" src="../../../src/lib/jquery/ui/js/jquery-ui.js"></script>
+    <script type="text/javascript" src="../../../src/framework/core/js/Fluid.js"></script>
+    <script type="text/javascript" src="../../../src/framework/core/js/FluidDocument.js"></script>
+    <script type="text/javascript" src="../../../src/framework/core/js/FluidIoC.js"></script>
+    <script type="text/javascript" src="../../../src/framework/core/js/DataBinding.js"></script>
+    <script type="text/javascript" src="../../../src/framework/core/js/ModelTransformation.js"></script>
+    <script type="text/javascript" src="../../../src/framework/core/js/ModelTransformationTransforms.js"></script>
+    <script type="text/javascript" src="../../../src/framework/core/js/jquery.keyboard-a11y.js"></script>
+    <script type="text/javascript" src="../../../src/framework/core/js/FluidView.js"></script>
+    <script type="text/javascript" src="../../../src/components/overviewPanel/js/OverviewPanel.js"></script>
+    <script type="text/javascript" src="../infusion-all.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="../../../src/components/overviewPanel/css/OverviewPanel.css"/>
+    <link href="weightConverter.css" rel="stylesheet">
+
+    <title>Weight Converter</title>
+</head>
+<body>
+<div class="flc-overviewPanel fl-overviewPanel-container"></div>
+
+<script type="text/javascript">
+    fluid.overviewPanel(".flc-overviewPanel", {
+        resources: {
+            template: {
+                href: "../../../src/components/overviewPanel/html/overviewPanelTemplate.html"
+            }
+        },
+        strings: {
+            componentName: "Weight Converter on Different Planets",
+            feedbackText: "Have a comment?",
+            feedbackLinkText: "Email Me"
+        },
+        markup: {
+            description: "This is Wirght converter on different planet. You can find 'What will be your wieght on different planets ?'. Here I am assuming that you are on the Earth.",
+            instructions: "<p>Choose the planet you want to go from selection drop down. Information about that planet, gravity of that planet and image of that planet will be displayed on the page.</p><p>Enter your weight in the input field and pess 'Enter'. Your resultant weight on that planet will be displayed on the page.</p>"
+        },
+        links: {
+            titleLink: "#",
+            demoCodeLink: "#",
+            infusionCodeLink: "https://github.com/fluid-project/infusion",
+            feedbackLink: "mailto:khushil324@gmail.com"
+        }
+    });
+</script>
+<div class="converter">
+    <h2 class="heading"></h2>
+    Enter Your Weight : <input class="enter-weight" type="number" size="10"/> KG (On Earth)
+    <br>
+    <br>
+    Choose Planet : <select class="planet-selector"></select>
+    <br>
+    <p class="planet-heading">You have Choosen : <span class="planet-name"></span></p>
+    <p class="planet-heading">Information about <span class="planet-name"></span> : <span
+            class="planet-information"></span></p>
+    <p class="planet-heading">Gravity of <span class="planet-name"></span> : <span
+            class="planet-gravity"></span><span><b> N/M^2</b></span>
+    </p>
+    <p class="planet-heading">Your Weight on <span class="planet-name"></span> : <span class="display-weight"></span><b>
+        KG</b></p>
+    <p class="planet-heading">Image of <span class="planet-name"></span> :</p>
+    <img class="planet-image" src="images/earth.jpg" width="300" height="300"/>
+</div>
+<script type="text/javascript" src="weightConverter.js"></script>
+</body>
+</html>

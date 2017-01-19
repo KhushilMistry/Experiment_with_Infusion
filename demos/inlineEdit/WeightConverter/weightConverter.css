@@ -1,0 +1,15 @@
+.heading{
+    text-align: center;
+}
+
+.converter{
+    margin-left: 40px;
+}
+
+.planet-heading{
+    font-size: 1.2em;
+}
+
+.planet-name , .display-amount , .planet-gravity {
+    font-weight: 900;
+}
